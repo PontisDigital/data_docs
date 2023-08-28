@@ -1,0 +1,59 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "Read only data API for Allowance",
+    "version": "0.2",
+    "title": "Data API",
+    "contact": {
+      "name": "Sam Collier",
+      "email": "scollier@pontis.digital"
+    }
+  },
+  "host": "data.allowance.fund",
+  "schemes": [
+    "https"
+  ],
+  "paths": {
+    "/sales": {
+      "get": {
+        "description": "Retrieve all sales made on the platform",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "status",
+            "in": "query",
+            "description": "Filter for a specific sale status (complete/pending/aborted)",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "mid",
+            "in": "query",
+            "description": "Filter for a specific merchant providing their merchant id",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          }
+        },
+        "security": [
+          {
+            "api_key": []
+          }
+        ]
+      }
+    }
+  },
+  "securityDefinitions": {
+    "api_key": {
+      "type": "apiKey",
+      "name": "authorization",
+      "in": "header"
+    }
+  }
+}
